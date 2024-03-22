@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
 import { trebleNotePositions } from "../_utility/notePositions";
 import type { NoteName } from "../_types/noteName";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 export interface NoteProps {
   note: NoteName;
@@ -22,14 +25,16 @@ const Note = ({ note, duration = "quarter", position }: NoteProps) => {
   const isUpstem = duration === "quarter" && yPos < trebleNotePositions.B4;
 
   return (
-    <span
-      className={`font-music absolute text-4xl text-black hover:text-red-950 `}
-      style={{ left: `${xPos}px`, top: `${yPos - 23}px` }}
-    >
-      <span className={isUpstem ? "" : "rotate-180 transform"}>
-        {noteCharacter}
+    <Tippy content={note}>
+      <span
+        className="font-music absolute cursor-pointer text-4xl text-black hover:text-red-950"
+        style={{ left: `${xPos}px`, top: `${yPos - 23}px` }}
+      >
+        <span className={isUpstem ? "" : "rotate-180 transform"}>
+          {noteCharacter}
+        </span>
       </span>
-    </span>
+    </Tippy>
   );
 };
 
