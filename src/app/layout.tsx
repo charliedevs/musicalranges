@@ -1,10 +1,16 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Inter, Noto_Music } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const noto = Noto_Music({
+  weight: "400",
+  subsets: ["music"],
+  variable: "--font-music",
 });
 
 export const metadata = {
@@ -20,7 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable} ${noto.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
