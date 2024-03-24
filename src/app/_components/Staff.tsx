@@ -1,3 +1,4 @@
+import { Clef } from "./Clef";
 import Note from "./Note";
 import type { NoteName } from "../_types/noteName";
 
@@ -6,11 +7,14 @@ interface StaffProps {
   notes: NoteName[];
 }
 
+export const clefWidth = 50;
+
 const staffLines = [1, 2, 3, 4, 5];
-const noteSpacing = 100;
+const noteSpacing = 50;
 
 const Staff = ({ clef, notes }: StaffProps) => {
-  const staffWidth = Math.min(500, notes.length * noteSpacing);
+  const staffWidth = Math.max(100, notes.length * noteSpacing + clefWidth);
+
   return (
     <div>
       <div className="relative w-full">
@@ -35,8 +39,13 @@ const Staff = ({ clef, notes }: StaffProps) => {
           style={{ width: `${staffWidth}px`, height: "100px" }}
           className="absolute left-1/2 top-0 -translate-x-1/2 transform"
         >
+          <Clef clef={clef} />
           {notes.map((note, index) => (
-            <Note key={index} note={note} position={index * noteSpacing} />
+            <Note
+              key={index}
+              note={note}
+              position={index * noteSpacing + clefWidth}
+            />
           ))}
         </div>
       </div>

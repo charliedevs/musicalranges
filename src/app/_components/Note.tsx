@@ -11,13 +11,13 @@ export interface NoteProps {
   position?: number;
 }
 
+// Note Characters
+const quarterNote = "𝅘𝅥";
+const wholeNote = "𝅗";
+
 const Note = ({ note, duration = "quarter", position }: NoteProps) => {
   const yPos = trebleNotePositions[note] ?? 0; // TODO: Update with other clefs
   const xPos = position ?? 0;
-
-  // Characters
-  const quarterNote = "𝅘𝅥";
-  const wholeNote = "𝅗";
 
   const noteCharacter = duration === "quarter" ? quarterNote : wholeNote;
 
@@ -27,7 +27,7 @@ const Note = ({ note, duration = "quarter", position }: NoteProps) => {
   return (
     <Tippy content={note}>
       <span
-        className="font-music absolute cursor-pointer text-4xl text-black hover:text-red-950"
+        className="absolute cursor-pointer font-music text-4xl text-black hover:text-red-950"
         style={{ left: `${xPos}px`, top: `${yPos - 23}px` }}
       >
         <span className={isUpstem ? "" : "rotate-180 transform"}>
