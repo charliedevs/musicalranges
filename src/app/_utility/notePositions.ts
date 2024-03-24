@@ -1,6 +1,7 @@
 import type { NoteName } from "../_types/noteName";
 
 export const trebleNotePositions: Record<NoteName, number> = {
+  C5: 15,
   B4: 20,
   A4: 25,
   G4: 30,
