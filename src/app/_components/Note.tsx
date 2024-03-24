@@ -22,19 +22,19 @@ const Note = ({ note, duration = "quarter", position }: NoteProps) => {
   const noteCharacter = duration === "quarter" ? quarterNote : wholeNote;
 
   // Determine the stem direction based on the note pitch TODO: Account for other clefs
-  const isUpstem = duration === "quarter" && yPos > trebleNotePositions.B4;
+  const isDownsteam = duration === "quarter" && yPos <= trebleNotePositions.B4;
   const noteClasses =
-    "block" + (isUpstem ? "" : " rotate-180 transform origin-bottom");
+    "block" + (isDownsteam ? " rotate-180 transform origin-bottom" : "");
 
   // Position notes in correct place on staff
-  const yOffset = isUpstem ? 23 : 37;
+  const yOffset = isDownsteam ? 37 : 23;
 
   return (
     <span
       className="absolute cursor-pointer font-music text-4xl text-black hover:text-red-950"
       style={{ left: `${xPos}px`, top: `${yPos - yOffset}px` }}
     >
-      <Tippy content={note}>
+      <Tippy content={note} placement={isDownsteam ? "top" : "bottom"}>
         <span className={noteClasses}>{noteCharacter}</span>
       </Tippy>
     </span>
