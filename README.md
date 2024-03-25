@@ -4,8 +4,7 @@ Website that lets you quickly visualize playable ranges of different musical ins
 
 > **Note:** This project is currently in the early stages of development.
 
-![image of music staff](https://github.com/charliedevs/musicalranges/blob/main/public/example-image.png?raw=true)
-
+![image of music staff](https://github.com/charliedevs/musicalranges/blob/main/public/images/example-image.png?raw=true)
 
 ## Learn More
 
